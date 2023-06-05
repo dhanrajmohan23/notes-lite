@@ -1,5 +1,11 @@
+import { Header } from "./components/common/header";
+
 function App() {
-  return <>Notes Lite</>;
+  return (
+    <>
+      <Header />;
+    </>
+  );
 }
 
 export default App;
