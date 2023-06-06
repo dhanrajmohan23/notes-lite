@@ -6,7 +6,7 @@ export namespace S {
     display: "flex",
     alignItems: "center",
     height: "8vh",
-    padding: "0 1rem",
+    padding: "0 1.5rem",
   }));
 
   export const CustomMenuIcon = styled("img")(() => ({
