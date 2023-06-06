@@ -5,8 +5,11 @@ export namespace S {
   export const HeaderContainer = styled(Box)(() => ({
     display: "flex",
     alignItems: "center",
-    background: "orange",
-    height: "10vh",
+    height: "8vh",
     padding: "0 1rem",
+  }));
+
+  export const CustomMenuIcon = styled("img")(() => ({
+    cursor: "pointer",
   }));
 }

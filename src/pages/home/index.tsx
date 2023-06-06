@@ -1,3 +1,5 @@
+import { S } from "./home.styled";
+
 export const Home = () => {
-  return <div>Home</div>;
+  return <S.MainContainer>Home</S.MainContainer>;
 };
