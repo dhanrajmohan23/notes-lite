@@ -19,4 +19,19 @@ export namespace S {
     padding: "1rem",
     borderRadius: "0.3rem",
   }));
+
+  export const DataGrid = styled(Box)(() => ({
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    gap: "1rem",
+    padding: "1rem 0 ",
+  }));
+
+  export const NotesContainer = styled(Box)(() => ({
+    background: "#ffffff",
+    minHeight: "10rem",
+    borderRadius: "0.3rem",
+    padding: "0.5rem",
+    height: "100%",
+  }));
 }

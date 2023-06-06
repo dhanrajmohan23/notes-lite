@@ -11,6 +11,10 @@ export const Home = () => {
           multiline
         />
       </S.InputContainer>
+      <S.DataGrid>
+        <S.NotesContainer>note 1</S.NotesContainer>
+        <S.NotesContainer>note 2</S.NotesContainer>
+      </S.DataGrid>
     </S.MainContainer>
   );
 };
