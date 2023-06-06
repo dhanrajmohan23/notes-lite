@@ -13,23 +13,58 @@ export const Sidebar = () => {
   return (
     <S.SideBarContainer sx={{ width: openSidebar ? "15rem" : "5rem" }}>
       <S.LabelContainer>
-        <S.CustomIcon src={NotesIcon} alt="" />
+        <S.CustomIcon
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }}
+          src={NotesIcon}
+          alt=""
+        />
         {openSidebar && <S.SidebarLabel>Notes</S.SidebarLabel>}
       </S.LabelContainer>
       <S.LabelContainer>
-        <S.CustomIcon src={RemindersIcon} alt="" />
+        <S.CustomIcon
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }}
+          src={RemindersIcon}
+          alt=""
+        />
         {openSidebar && <S.SidebarLabel>Reminders</S.SidebarLabel>}
       </S.LabelContainer>
       <S.LabelContainer>
-        <S.CustomIcon src={EditLablesIcon} alt="" />
+        <S.CustomIcon
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }}
+          src={EditLablesIcon}
+          alt=""
+        />
         {openSidebar && <S.SidebarLabel>Edit Labels</S.SidebarLabel>}
       </S.LabelContainer>
       <S.LabelContainer>
-        <S.CustomIcon src={ArchiveIcon} alt="" />
+        <S.CustomIcon
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }}
+          src={ArchiveIcon}
+          alt=""
+        />
         {openSidebar && <S.SidebarLabel>Archive</S.SidebarLabel>}
       </S.LabelContainer>
       <S.LabelContainer>
-        <S.CustomIcon src={BinIcon} alt="" />
+        <S.CustomIcon
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.1 },
+          }}
+          src={BinIcon}
+          alt=""
+        />
         {openSidebar && <S.SidebarLabel>Bin</S.SidebarLabel>}
       </S.LabelContainer>
     </S.SideBarContainer>

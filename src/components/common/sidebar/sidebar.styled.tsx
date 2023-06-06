@@ -1,5 +1,6 @@
 import { Typography, styled } from "@mui/material";
 import { Box } from "@mui/material";
+import { motion } from "framer-motion";
 
 export namespace S {
   export const SideBarContainer = styled(Box)(() => ({
@@ -10,7 +11,7 @@ export namespace S {
     padding: "1rem 0",
   }));
 
-  export const CustomIcon = styled("img")(() => ({
+  export const CustomIcon = styled(motion.img)(() => ({
     cursor: "pointer",
   }));
 
