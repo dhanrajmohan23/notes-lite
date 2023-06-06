@@ -11,12 +11,27 @@ export const Sidebar = () => {
   const { openSidebar } = useSelector((state: RootState) => state.app);
 
   return (
-    <S.SideBarContainer>
-      <img src={NotesIcon} alt="" />
-      <img src={RemindersIcon} alt="" />
-      <img src={EditLablesIcon} alt="" />
-      <img src={ArchiveIcon} alt="" />
-      <img src={BinIcon} alt="" />
+    <S.SideBarContainer sx={{ width: openSidebar ? "15rem" : "5rem" }}>
+      <S.LabelContainer>
+        <S.CustomIcon src={NotesIcon} alt="" />
+        {openSidebar && <S.SidebarLabel>Notes</S.SidebarLabel>}
+      </S.LabelContainer>
+      <S.LabelContainer>
+        <S.CustomIcon src={RemindersIcon} alt="" />
+        {openSidebar && <S.SidebarLabel>Reminders</S.SidebarLabel>}
+      </S.LabelContainer>
+      <S.LabelContainer>
+        <S.CustomIcon src={EditLablesIcon} alt="" />
+        {openSidebar && <S.SidebarLabel>Edit Labels</S.SidebarLabel>}
+      </S.LabelContainer>
+      <S.LabelContainer>
+        <S.CustomIcon src={ArchiveIcon} alt="" />
+        {openSidebar && <S.SidebarLabel>Archive</S.SidebarLabel>}
+      </S.LabelContainer>
+      <S.LabelContainer>
+        <S.CustomIcon src={BinIcon} alt="" />
+        {openSidebar && <S.SidebarLabel>Bin</S.SidebarLabel>}
+      </S.LabelContainer>
     </S.SideBarContainer>
   );
 };
