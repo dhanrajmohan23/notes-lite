@@ -1,17 +1,26 @@
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
 import { Header } from "./components/common/header";
 import { Sidebar } from "./components/common/sidebar";
 import { Home } from "./pages/home";
-import { S } from "./app.styled";
-import { store } from "./store";
-import { Provider } from "react-redux";
 import { Login } from "./pages/login";
+import { RootState } from "./store";
+import { setIsLogged } from "./store/app/appSlice";
+import { S } from "./app.styled";
 
-function App() {
+const App = () => {
+  const { isLogged } = useSelector((state: RootState) => state.app);
+  const userToken = Cookies.get("userToken");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    userToken && dispatch(setIsLogged(true));
+  }, [userToken]);
+
   return (
-    <Provider store={store}>
-      {false ? (
-        <Login />
-      ) : (
+    <>
+      {userToken && isLogged ? (
         <>
           <Header />
           <S.MainBody>
@@ -19,9 +28,11 @@ function App() {
             <Home />
           </S.MainBody>
         </>
+      ) : (
+        <Login />
       )}
-    </Provider>
+    </>
   );
-}
+};
 
 export default App;
