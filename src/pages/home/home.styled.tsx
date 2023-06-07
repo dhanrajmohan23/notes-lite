@@ -1,4 +1,4 @@
-import { Input, styled } from "@mui/material";
+import { Button, Input, styled } from "@mui/material";
 import { Box } from "@mui/material";
 
 export namespace S {
@@ -11,6 +11,18 @@ export namespace S {
   export const InputContainer = styled(Box)(() => ({
     background: "lavender",
     width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: "1rem",
+  }));
+
+  export const PostButton = styled(Button)(() => ({
+    color: "white",
+    background: "#b6a5ff",
+    width: "8rem",
+    justifySelf: "flex-end",
+    textTransform: "none",
   }));
 
   export const CustomInput = styled(Input)(() => ({
