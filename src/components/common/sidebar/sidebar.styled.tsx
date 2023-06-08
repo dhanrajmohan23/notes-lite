@@ -9,6 +9,7 @@ export namespace S {
     alignItems: "center",
     gap: "1rem",
     padding: "1rem 0",
+    transition: "0.8s",
   }));
 
   export const CustomIcon = styled(motion.img)(() => ({
@@ -22,6 +23,7 @@ export namespace S {
     alignItems: "center",
     width: "100%",
     padding: "0 1.5rem",
+    transition: "0.8s",
   }));
 
   export const SidebarLabel = styled(Typography)(() => ({}));

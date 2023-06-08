@@ -31,6 +31,7 @@ export const Login = () => {
         })
         .then((res) => {
           Cookies.set("userToken", res?.data?.token, { expires: 1 });
+          Cookies.set("userId", res?.data?.userId, { expires: 1 });
           dispatch(setIsLogged(true));
           dispatch(setUserToken(res?.data?.token));
         });
