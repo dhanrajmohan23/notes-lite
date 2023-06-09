@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 
 export const Home = () => {
   // State values
-  const [userNote, setUserNote] = useState<string>();
+  const [userNote, setUserNote] = useState<string>("");
   const [userNotes, setUserNotes] = useState([]);
   const userId = Cookies.get("userId");
 
@@ -24,6 +24,7 @@ export const Home = () => {
       });
       console.log("posted successfully");
       getUserNotes();
+      setUserNote("");
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +33,9 @@ export const Home = () => {
   const getUserNotes = () => {
     try {
       axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/getAll`)
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/getNotesByUserId/${userId}`
+        )
         .then((res) => {
           setUserNotes(res.data);
         });
@@ -49,6 +52,7 @@ export const Home = () => {
           disableUnderline
           placeholder="Take a note"
           multiline
+          value={userNote}
           onChange={(e) => setUserNote(e.target.value)}
         />
         <S.PostButton onClick={postNote}>Post</S.PostButton>
