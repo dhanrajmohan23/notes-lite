@@ -22,7 +22,7 @@ const App = () => {
     <>
       {userToken && isLogged ? (
         <>
-          <Header />
+          {/* <Header /> */}
           <S.MainBody>
             <Sidebar />
             <Home />

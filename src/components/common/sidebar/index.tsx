@@ -4,14 +4,32 @@ import RemindersIcon from "../../../assets/icons/remiders.svg";
 import EditLablesIcon from "../../../assets/icons/edit-label.svg";
 import ArchiveIcon from "../../../assets/icons/archive.svg";
 import BinIcon from "../../../assets/icons/bin.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import leftDoubleArrow from "../../../assets/icons/left-double-arrow.svg";
+import rightDoubleArrow from "../../../assets/icons/right-double-arrow.svg";
+import { setSidebarState } from "../../../store/app/appSlice";
 
 export const Sidebar = () => {
   const { openSidebar } = useSelector((state: RootState) => state.app);
+  const dispatch = useDispatch();
 
   return (
     <S.SideBarContainer sx={{ width: openSidebar ? "15rem" : "5rem" }}>
+      <S.userDetailsContainer>
+        <S.userProfileContainer></S.userProfileContainer>
+        {openSidebar && (
+          <S.UserDataContainer>
+            <S.UserName>Dhanraj</S.UserName>
+            <S.UserEmail>dhanraj@aequalisys.com</S.UserEmail>
+          </S.UserDataContainer>
+        )}
+        <S.ArrowIconContainer
+          onClick={() => dispatch(setSidebarState(!openSidebar))}
+        >
+          <img src={openSidebar ? leftDoubleArrow : rightDoubleArrow} alt="" />
+        </S.ArrowIconContainer>
+      </S.userDetailsContainer>
       <S.LabelContainer>
         <S.CustomIcon
           whileHover={{
