@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
-import { Header } from "./components/common/header";
 import { Sidebar } from "./components/common/sidebar";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
@@ -22,7 +21,6 @@ const App = () => {
     <>
       {userToken && isLogged ? (
         <>
-          {/* <Header /> */}
           <S.MainBody>
             <Sidebar />
             <Home />
