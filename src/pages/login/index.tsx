@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { TextField } from "@mui/material";
+import {
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from "@mui/material";
 import { S } from "./login.styled";
 import axios from "axios";
-import { setIsLogged, setUserToken } from "../../store/app/appSlice";
+import { handleLogin } from "../../store/app/app.actions";
 import { useDispatch } from "react-redux";
-import Cookies from "js-cookie";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { AppDispatch } from "../../store";
 
 export const Login = () => {
   // State values
@@ -12,7 +20,7 @@ export const Login = () => {
   const [userName, setUserName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   //   Functions
   const handleShowLoginToggle = () => {
@@ -22,23 +30,25 @@ export const Login = () => {
     setPassword("");
   };
 
-  const handleLogin = () => {
-    try {
-      axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
-          email: email,
-          password: password,
-        })
-        .then((res) => {
-          Cookies.set("userToken", res?.data?.token, { expires: 1 });
-          Cookies.set("userId", res?.data?.userId, { expires: 1 });
-          dispatch(setIsLogged(true));
-          dispatch(setUserToken(res?.data?.token));
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleLogin = () => {
+  //   try {
+  //     axios
+  //       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
+  //         email: email,
+  //         password: password,
+  //       })
+  //       .then((res) => {
+  //         Cookies.set("userToken", res?.data?.token, { expires: 1 });
+  //         Cookies.set("userId", res?.data?.user?.userId, { expires: 1 });
+  //         dispatch(setIsLogged(true));
+  //         dispatch(setUserToken(res?.data?.token));
+  //         dispatch(setCurrentUserName(res?.data?.user?.userName));
+  //         dispatch(setCurrentUserEmail(res?.data?.user?.email));
+  //       });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleRegister = () => {
     try {
@@ -55,6 +65,16 @@ export const Login = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
   };
 
   return (
@@ -77,15 +97,42 @@ export const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <TextField
-          label="Password"
-          variant="outlined"
+        {/* <Input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+          endAdornment={<InputAdornment position="end">eye</InputAdornment>}
+        /> */}
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
         <S.LoginBtn
-          onClick={() => (showLogin ? handleLogin() : handleRegister())}
+          onClick={() =>
+            showLogin
+              ? dispatch(handleLogin(email, password))
+              : handleRegister()
+          }
         >
           {showLogin ? "Log In" : "Create Account"}
         </S.LoginBtn>

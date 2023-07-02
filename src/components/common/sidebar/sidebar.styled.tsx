@@ -8,7 +8,7 @@ export namespace S {
     flexDirection: "column",
     alignItems: "center",
     gap: "1rem",
-    padding: "1rem 0",
+    // padding: "1rem 0",
     transition: "0.8s",
     borderRight: "1px solid #b7b6c4",
   }));
@@ -36,6 +36,7 @@ export namespace S {
     gap: "0.5rem",
     alignItems: "center",
     transition: "0.8s",
+    width: "100%",
   }));
 
   export const userProfileContainer = styled(Box)(() => ({

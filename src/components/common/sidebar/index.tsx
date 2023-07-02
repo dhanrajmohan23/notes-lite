@@ -11,7 +11,9 @@ import rightDoubleArrow from "../../../assets/icons/right-double-arrow.svg";
 import { setSidebarState } from "../../../store/app/appSlice";
 
 export const Sidebar = () => {
-  const { openSidebar } = useSelector((state: RootState) => state.app);
+  const { openSidebar, userName, userEmail } = useSelector(
+    (state: RootState) => state.app
+  );
   const dispatch = useDispatch();
 
   return (
@@ -20,8 +22,8 @@ export const Sidebar = () => {
         <S.userProfileContainer></S.userProfileContainer>
         {openSidebar && (
           <S.UserDataContainer>
-            <S.UserName>Dhanraj</S.UserName>
-            <S.UserEmail>dhanraj@aequalisys.com</S.UserEmail>
+            <S.UserName>{userName}</S.UserName>
+            <S.UserEmail>{userEmail}</S.UserEmail>
           </S.UserDataContainer>
         )}
         <S.ArrowIconContainer
